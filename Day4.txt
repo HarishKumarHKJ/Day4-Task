@@ -1,3 +1,38 @@
 1. How To Compare Two JSON Have The Same Properties Without Order?
   a) let obj1={name: "Person 1", age:5};
   b) let obj2={age:5, name: "Person 1"};
+
+Ans:
+  var obj1={name: "Person 1", age:5};
+var obj2={age:5, name: "Person 1"};
+
+function isEqual(obj1, obj2) {  
+  var obj1 = Object.keys(obj1);
+  var obj2 = Object.keys(obj2);
+
+  if (obj1.length != obj2.length) {
+    return false;
+  }
+  for (var obj1 of obj1) {
+   
+    if (obj1[obj1] != obj2[obj1]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+console.log(isEqual(obj1, obj2));
+
+2.Use The Rest Countries API URL -> https://restcountries.com/v3.1/all  And Display All The Country Flags In The Console
+
+Ans:
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://restcountries.com/v3.1/all');
+xhr.responseType = 'json';
+xhr.send();
+xhr.onload = function(){
+  var responseObj = xhr.response;
+      console.log(responseObj[0].flags);
+    }
+  
